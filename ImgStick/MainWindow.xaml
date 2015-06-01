@@ -1,0 +1,15 @@
+﻿<Window x:Class="ImgStick.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowStyle="None" MouseDown="Window_MouseDown" MouseUp="Window_MouseUp" Foreground="{x:Null}" AllowsTransparency="True" ResizeMode="CanResizeWithGrip">
+    <Window.Resources>
+        <ContextMenu x:Key="cm">
+            <MenuItem x:Name="menuSelectImage" Header="Select image..." Click="menuSelectImage_Click"/>
+            <MenuItem x:Name="menuClose" Header="Close" Click="menuClose_Click"/>
+        </ContextMenu>
+    </Window.Resources>
+    <Grid>
+        <Image x:Name="img" Margin="0,0,0,0"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,0"/>
+    </Grid>
+</Window>
