@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,15 +56,15 @@ namespace ImgStick
             {
                 string filename = dlg.FileName;
 
-                try
+                using (FileStream stream = new FileStream(filename, FileMode.Open, FileAccess.Read))
                 {
-                    Uri u = new Uri(dlg.FileName, UriKind.Absolute);
-                    img.Source = new BitmapImage(u);
-                }
+                    BitmapImage bimg = new BitmapImage();
+                    bimg.BeginInit();
+                    bimg.StreamSource = stream;
+                    bimg.CacheOption = BitmapCacheOption.OnLoad;
+                    bimg.EndInit();
 
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error!");
+                    img.Source = bimg;
                 }
             }
         }
